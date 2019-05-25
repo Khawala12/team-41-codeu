@@ -14,40 +14,66 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
+
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>About Us</title>
+    <title>AboutUS</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
     <link rel="stylesheet" href="/css/main.css">
-  </head>
-  </head>
-  <body style="background: url(https://gdcindia.co.in/wp-content/uploads/2019/03/contact-us-background.jpg)">
-    <nav>
-      <ul id="navigation">
-        <li><a href="/">Home</a></li>
-        <li><a href="/aboutus.html">About Our Team</a></li>
-      </ul>
-    </nav>
-    <h1>About Our Team</h1>
-    <h2>Teammate A Name</h2>
+    <link rel="stylesheet" href="/css/user-page.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+
+      body {
+        font-family: 'Acme';font-size: 22px;
+      }
+
+    </style>
+</head>
+
+
+<body onload="buildUI();">
+
+  <nav>
+    <ul id="navigation">
+      <li><a href="/">Home</a></li>
+      <li><a href="/aboutus.html">About Our Team</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+
+    <img src="img/cover4.jpg" alt="image not load" width="1920" height="1080" class="bg">
+    <h2><span>About US</span></h2>
+
+  </div>
+
+
+
+  <div class="container_text">
+
+    <h1>Teammate A Name</h1>
     <ul>
       <li>Summer Feelz: </li>
       <li>Aspirational Hobby: </li>
       <li>Ask me About: </li>
     </ul>
-    <h2>Khawala Tauseef</h2>
+    <h1>Khawala Tauseef</h1>
     <ul>
       <li>Summer Feelz: Excited, Happy, Relaxing </li>
-      <li>Aspirational Hobby: I would travel. Travelling will help me connecting new people as I'll meet people from various races, regions. </li>
-      <li>Ask me About: I'm passionate about baking. I love the process of researching new recipes and testing them out. </li>
+      <li>Aspirational Hobby: I would travel. Travelling will help me connecting<br>  new people as I'll meet people from various races, regions. </li>
+      <li>Ask me About: I'm passionate about baking. I love the process of <br>researching new recipes and testing them out. </li>
     </ul>
-    <h2>Muhammad Abdullah Rafique</h2>
+    <h1>Muhammad Abdullah Rafique</h1>
     <ul>
       <li>Summer Feelz: Interesting, Anticipating, Coding.</li>
       <li>Aspirational Hobby: I love travelling. I Just want to sit under Norway's brightning auroras and spend my night just seeing the milkyway :) </li>
       <li>Ask me About: How to curve the football to put in top left corner.</li>
     </ul>
+
+  </div>
 
   </body>
 </html>

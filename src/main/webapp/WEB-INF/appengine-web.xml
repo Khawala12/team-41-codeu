@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2010 Google Inc.
-
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
-
       http://www.apache.org/licenses/LICENSE-2.0
-
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,12 +13,7 @@
 -->
 
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-<<<<<<< HEAD
-  <application>	
-su19-codeu-41-984</application>
-=======
   <application>su19-codeu-41-984</application>
->>>>>>> b69962e2eea9d64bb28ed4a429459812e3004ddc
   <version>1</version>
   <threadsafe>false</threadsafe>
   <sessions-enabled>true</sessions-enabled>

@@ -32,6 +32,7 @@ public class AboutMeServlet extends HttpServlet {
  {
    try
  {
+   response.setContentType("text/html");
     // statement(s) that might cause exception
   String userEmail = request.getParameter("user");
   if (userEmail == null || userEmail == ""){

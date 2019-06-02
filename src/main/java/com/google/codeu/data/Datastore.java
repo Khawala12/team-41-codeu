@@ -81,7 +81,7 @@ public class Datastore {
 
     return messages;
   }
-  
+
   public List<Message> getAllMessages(){
 	  List<Message> messages = new ArrayList<>();
 
@@ -119,6 +119,31 @@ public class Datastore {
          }
          return users;
      }
+     /** Stores the User in Datastore. */
+
+   public void storeUser(User user) {
+
+         Entity userEntity = new Entity("User", user.getEmail());
+         userEntity.setProperty("email", user.getEmail());
+         userEntity.setProperty("aboutMe", user.getAboutMe());
+         datastore.put(userEntity);
+    }
+
+  public User getUser(String email) {
+
+         Query query = new Query("User")
+
+           .setFilter(new Query.FilterPredicate("email", FilterOperator.EQUAL, email));
+
+         PreparedQuery results = datastore.prepare(query);
+         Entity userEntity = results.asSingleEntity();
+         if(userEntity == null) {
+
+          return null;
+         }
+         String aboutMe = (String) userEntity.getProperty("aboutMe");
+         User user = new User(email, aboutMe);
+         return user;
+
+  }
 }
-
-

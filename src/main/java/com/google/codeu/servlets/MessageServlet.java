@@ -21,6 +21,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.google.codeu.data.Datastore;
 import com.google.codeu.data.Message;
 import com.google.gson.Gson;
+import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +30,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.MalformedURLException;
+
 
 /** Handles fetching and saving {@link Message} instances. */
 @WebServlet("/messages")
@@ -77,10 +82,42 @@ public class MessageServlet extends HttpServlet {
 
     String user = userService.getCurrentUser().getEmail();
     String text = Jsoup.clean(request.getParameter("text"), Whitelist.none());
+    String regex = "(https?://\\S+\\.(png|jpg|gif|mp4|mp3))";
+    String replacement = "<img src=\"$1\" />";
+    String textReplaced = text.replaceAll(regex, replacement);
+    String [] textSplit = textReplaced.split("<");
+    String testUrl;
+    int testUrlLength;
+    boolean validUrl = true;
+    String outputString = textSplit[0];
 
-    Message message = new Message(user, text);
+    for (int i = 1; i < textSplit.length; i++)
+    {
+
+        testUrl = textSplit[i];
+        testUrlLength = testUrl.length() -3;
+        testUrl = testUrl.substring(8,testUrlLength);
+        testUrl = (String) testUrl;
+        try {
+            int startIndex = testUrl.indexOf("\"");
+            int endIndex = testUrl.lastIndexOf("\"");
+            testUrl = testUrl.substring(startIndex + 1, endIndex);
+            System.out.println(testUrl);
+            URL url = new URL(testUrl);
+            ImageIO.read(url.openStream());
+            outputString += testUrl.replaceAll(regex, replacement) + " ";
+            }
+        catch (MalformedURLException e) {
+
+            System.out.println(e);
+            }
+        catch (Exception e) {
+            System.out.println(e);
+            }
+    }
+
+    Message message = new Message(user, outputString);
     datastore.storeMessage(message);
-
     response.sendRedirect("/user-page.html?user=" + user);
   }
 }

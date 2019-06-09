@@ -82,14 +82,10 @@ public class MessageServlet extends HttpServlet {
 
     String user = userService.getCurrentUser().getEmail();
     String text = Jsoup.clean(request.getParameter("text"), Whitelist.none());
-
-    String regex = "(https?://\\S+\\.(png|jpg))";
+    String regex = "(https?://\\S+\\.(png|jpg|gif|mp4|mp3))";
     String replacement = "<img src=\"$1\" />";
     String textReplaced = text.replaceAll(regex, replacement);
     String [] textSplit = textReplaced.split("<");
-
-    System.out.println(textReplaced);
-
     String testUrl;
     int testUrlLength;
     boolean validUrl = true;
@@ -103,8 +99,6 @@ public class MessageServlet extends HttpServlet {
         testUrl = testUrl.substring(8,testUrlLength);
         testUrl = (String) testUrl;
         try {
-            // testUrl = testUrl.substring(1, testUrl.length()-1);
-
             int startIndex = testUrl.indexOf("\"");
             int endIndex = testUrl.lastIndexOf("\"");
             testUrl = testUrl.substring(startIndex + 1, endIndex);
@@ -122,13 +116,8 @@ public class MessageServlet extends HttpServlet {
             }
     }
 
-        System.out.println(outputString);
-
-
-
     Message message = new Message(user, outputString);
     datastore.storeMessage(message);
-
     response.sendRedirect("/user-page.html?user=" + user);
   }
 }

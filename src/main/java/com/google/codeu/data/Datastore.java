@@ -126,6 +126,7 @@ public class Datastore {
          Entity userEntity = new Entity("User", user.getEmail());
          userEntity.setProperty("email", user.getEmail());
          userEntity.setProperty("aboutMe", user.getAboutMe());
+         userEntity.setProperty("aboutMeScore", user.getAboutMeScore());
          datastore.put(userEntity);
     }
 
@@ -142,7 +143,8 @@ public class Datastore {
           return null;
          }
          String aboutMe = (String) userEntity.getProperty("aboutMe");
-         User user = new User(email, aboutMe);
+         Double  aboutMeScore = (Double ) userEntity.getProperty("aboutMeScore");
+         User user = new User(email, aboutMe, aboutMeScore);
          return user;
 
   }

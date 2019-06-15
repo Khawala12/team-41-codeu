@@ -3,10 +3,11 @@ package com.google.codeu.data;
 public class User {
   private String email;
   private String aboutMe;
-
-  public User(String email, String aboutMe) {
+  private Double  aboutMeScore;
+  public User(String email, String aboutMe, Double  aboutMeScore) {
     this.email = email;
     this.aboutMe = aboutMe;
+    this.aboutMeScore = aboutMeScore;
   }
 
   public String getEmail (){
@@ -16,4 +17,9 @@ public class User {
   public String getAboutMe () {
     return aboutMe;
   }
+
+  public Double  getAboutMeScore () {
+    return aboutMeScore;
+  }
+
 }

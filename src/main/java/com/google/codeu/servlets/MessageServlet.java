@@ -117,7 +117,7 @@ public class MessageServlet extends HttpServlet {
             }
     }
 
-    Message message = new Message(user, text);
+    Message message = new Message(user, outputString);
     datastore.storeMessage(message);
     response.sendRedirect("/user-page.html?user=" + user);
   }

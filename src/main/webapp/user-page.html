@@ -23,6 +23,48 @@ limitations under the License.
     <!-- <link rel="stylesheet" href="/css/main.css"> -->
     <script src="/js/user-page-loader.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
+    <script>
+      function requestTranslationAboutMe() {
+        const text = document.getElementById('text').value;
+        const languageCode = document.getElementById('language').value;
+
+        const resultContainer = document.getElementById('result');
+        resultContainer.innerText = 'Loading...';
+
+        const params = new URLSearchParams();
+        params.append('text', text);
+        params.append('languageCode', languageCode);
+
+        fetch('/translate', {
+          method: 'POST',
+          body: params
+        }).then(response => response.text())
+        .then((translatedMessage) => {
+          resultContainer.innerText = translatedMessage;
+        });
+      }
+    </script>
+    <script>
+      function requestTranslationPost() {
+        const text = document.getElementById('message-input').value;
+        const languageCode = document.getElementById('message-language').value;
+
+        const resultContainer = document.getElementById('message-result');
+        resultContainer.innerText = 'Loading...';
+
+        const params = new URLSearchParams();
+        params.append('text', text);
+        params.append('languageCode', languageCode);
+
+        fetch('/translate', {
+          method: 'POST',
+          body: params
+        }).then(response => response.text())
+        .then((translatedMessage) => {
+          resultContainer.innerText = translatedMessage;
+        });
+      }
+    </script>
     <style>
       input[type=text], select {
     width: 100%;
@@ -65,9 +107,14 @@ limitations under the License.
     <h1 id="page-title">User Page</h1>
     <div id="about-me-container">Loading...</div>
 
+    
+
   <div id="about-me-form" class="hidden">
   <form action="/about" method="POST">
-    <textarea name="about-me" placeholder="about me" required></textarea>
+    <textarea id ="text" name="about-me" placeholder="about me" required></textarea>
+
+    
+
     <br/>
     <!-- <button type="submit" name="checkScore" value="score">Ok</button> -->
     <!-- <br/> -->
@@ -77,6 +124,19 @@ limitations under the License.
     <!-- <button type="submit" name="button" value="buttonDisAgree">Cancel</button> -->
     <input type="submit" value="Submit">
   </form>
+  <select id="language">
+    <option value="es">English</option>
+     <option value="zh">Chinese</option>
+     <option value="es">Spanish</option>
+     <option value="hi">Hindi</option>
+     <option value="ar">Arabic</option>
+   </select>
+
+  <button onclick="requestTranslationAboutMe();">Translate</button>
+
+  <hr/>
+  <div id="result"></div>
+  
 </div>
     <form id="message-form" action="/messages" method="POST" class="hidden">
       Enter a new message:
@@ -85,11 +145,28 @@ limitations under the License.
       <br/>
       <input type="submit" value="Submit">
     </form>
+
+    <select id="message-language">
+      <option value="es">English</option>
+      <option value="zh">Chinese</option>
+      <option value="es">Spanish</option>
+      <option value="hi">Hindi</option>
+      <option value="ar">Arabic</option>
+    </select>
+
+    <button onclick="requestTranslationPost();">Translate</button>
+
     <hr/>
+    <div id="message-result"></div>
+
+    <hr/>
+
     <script>
       const config = {removePlugins: [ 'Heading', 'List', 'ImageUpload' ]};
       ClassicEditor.create(document.getElementById('message-input'), config );
     </script>
     <div id="message-container">Loading...</div>
+    
   </body>
+  
 </html>

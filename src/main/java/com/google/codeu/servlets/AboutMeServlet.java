@@ -3,7 +3,6 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.codeu.data.Datastore;
 import com.google.cloud.language.v1.Sentiment;
-import com.google.codeu.servlets.SentimentAnalysisServlet;
 import com.google.codeu.data.User;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
-// import .SentimentAnalysisServlet;
 import java.util.concurrent.TimeUnit;
 import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.LanguageServiceClient;
@@ -27,7 +25,6 @@ import java.text.DecimalFormat;
 
 public class AboutMeServlet extends HttpServlet {
 
-  SentimentAnalysisServlet sentimentAnalysisServlet;
   private Datastore datastore;
   public void init() {
     datastore = new Datastore();

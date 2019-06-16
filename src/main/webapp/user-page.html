@@ -66,7 +66,8 @@ limitations under the License.
       }
     </script>
     <style>
-      input[type=text], select {
+
+    input[type=text], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -94,6 +95,8 @@ limitations under the License.
     padding: 20px;
   }
 
+
+
   </style>
 
   </head>
@@ -104,9 +107,13 @@ limitations under the License.
         <li><a href="/aboutus.html">About Our Team</a></li>
       </ul>
     </nav>
-    <h1 id="page-title">User Page</h1>
-    <div id="about-me-container">Loading...</div>
 
+  <div style="display: inline-block;width: 100%;" class = "displayUser">
+    <img src="img/icon.png" style="float:left;width:70px;height:70px;"   />
+    <h1 id="page-title">User Page</h1>
+  </div>
+
+<<<<<<< HEAD
     
 
   <div id="about-me-form" class="hidden">
@@ -115,15 +122,29 @@ limitations under the License.
 
     
 
+=======
+  <hr/>
+  <br/>
+  <br/>
+
+    <!-- <h1 id="page-title">User Page</h1> -->
+    <h2> About Me </h2>
+    <div id="about-me-container" class="displayAbout">Loading...</div>
+    <hr/>
+>>>>>>> 994d66a9dbee645f11361f17e7a0a91a7a978bb1
     <br/>
-    <!-- <button type="submit" name="checkScore" value="score">Ok</button> -->
-    <!-- <br/> -->
-    <!-- <p id="scoreDisplay" </p> -->
+
+
+  <div id="about-me-form" class = "displayUser">
+
+
+  <form action="/about" method="POST" class = "displayUser">
+    <h3>enter new about me</h3>
+    <textarea name="about-me" id = "message-input" placeholder="about me" required></textarea>
     <br/>
-    <!-- <button type="submit" name="button" value="buttonAgree">Agree</button> -->
-    <!-- <button type="submit" name="button" value="buttonDisAgree">Cancel</button> -->
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id = "formsubmitbutton">
   </form>
+<<<<<<< HEAD
   <select id="language">
     <option value="es">English</option>
      <option value="zh">Chinese</option>
@@ -137,13 +158,17 @@ limitations under the License.
   <hr/>
   <div id="result"></div>
   
+=======
+
+>>>>>>> 994d66a9dbee645f11361f17e7a0a91a7a978bb1
 </div>
-    <form id="message-form" action="/messages" method="POST" class="hidden">
-      Enter a new message:
+
+    <form id="message-form" action="/messages" method="POST" class="message-body">
+      <h3> Enter a new message </h3>
       <br/>
       <textarea name="text" id="message-input" required></textarea>
       <br/>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" id = "formsubmitbutton1">
     </form>
 
     <select id="message-language">
@@ -165,8 +190,7 @@ limitations under the License.
       const config = {removePlugins: [ 'Heading', 'List', 'ImageUpload' ]};
       ClassicEditor.create(document.getElementById('message-input'), config );
     </script>
-    <div id="message-container">Loading...</div>
+    <div id="message-container" class = "container">Loading...</div>
     
-  </body>
-  
+  </body> 
 </html>

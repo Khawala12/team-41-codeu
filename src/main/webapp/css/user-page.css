@@ -16,31 +16,107 @@
 
 /* Set the size of the message input to be 100 pixels high
    and will fill the width of its parent element. */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Andada|Permanent+Marker|Raleway:300');
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600');
+
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src: url("../fonts/codropsicons/codropsicons.eot");
+	src: url("../fonts/codropsicons/codropsicons.eot?#iefix") format("embedded-opentype"), url("../fonts/codropsicons/codropsicons.woff") format("woff"), url("../fonts/codropsicons/codropsicons.ttf") format("truetype"), url("../fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
+}
+
+body {
+  background-image: linear-gradient(to right, #2c3e50 , #3498db)
+}
+
+h1 {
+  margin-left: 50px;
+  padding-left: 30px;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+}
+
+h2 {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+}
+
+
+h3 {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  text-transform: lowercase;
+  font-weight: 300;
+}
+
+
+
 #message-input {
-  height: 100px;
-  width: 100%;
+  background-color: transparent;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  letter-spacing: 5px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid red;
+  margin: 20px 50px;
+  width: 30%;
+}
+
+.displayUser {
+  background-color: transparent;
+}
+
+.displayAbout {
+  background-color: transparent;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
 }
 
 .message-body img {
 
   display: block;
-
   margin-top: 25px;
-
   max-width: 75%;
 
 }
 /* Give each message a rounded border. */
 .message-div {
-  border: thin solid black;
+  /* align-content: center; */
+  border-left: 6px solid red;
+  /* border: thin solid black; */
   border-radius: 5px;
   margin-top: 20px;
+
 }
 
 /* Add a bottom border to the message header. */
 .message-header {
   border-bottom: thin solid black;
   padding: 5px;
+}
+
+#formsubmitbutton {
+  width: 10%;
+  margin-left: 50px;
+  background: #282828;
+  border: 1px solid #282828;
+  color: #F2F2F2;
+}
+
+#formsubmitbutton1 {
+  width: 10%;
+  margin-left: 70px;
+  background: #282828;
+  border: 1px solid #282828;
+  color: #F2F2F2;
 }
 
 /* Give the message body a margin so the text
@@ -52,5 +128,6 @@
 /* Use this to hide certain elements like forms if the
    user is not logged in or viewing their own page. */
 .hidden {
+  background-color: transparent;
   display: none;
 }

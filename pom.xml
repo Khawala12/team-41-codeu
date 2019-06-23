@@ -34,7 +34,15 @@ limitations under the License.
     <failOnMissingWebXml>false</failOnMissingWebXml>
   </properties>
 
+
+
   <dependencies>
+
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-vision</artifactId>
+      <version>1.55.0</version>
+    </dependency>
 
     <dependency>
       <groupId>com.google.cloud</groupId>

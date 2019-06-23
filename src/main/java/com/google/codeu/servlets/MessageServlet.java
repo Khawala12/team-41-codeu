@@ -37,14 +37,38 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.MalformedURLException;
 import java.text.DecimalFormat;
-
-
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.ServingUrlOptions;
+import com.google.cloud.vision.v1.AnnotateImageRequest;
+import com.google.cloud.vision.v1.AnnotateImageResponse;
+import com.google.cloud.vision.v1.BatchAnnotateImagesResponse;
+import com.google.cloud.vision.v1.EntityAnnotation;
+import com.google.cloud.vision.v1.Feature;
+import com.google.cloud.vision.v1.Image;
+import com.google.cloud.vision.v1.ImageAnnotatorClient;
+import com.google.protobuf.ByteString;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
+import java.awt.image.DataBufferByte;
 /** Handles fetching and saving {@link Message} instances. */
 @WebServlet("/messages")
 public class MessageServlet extends HttpServlet {
 
   private Datastore datastore;
-
+  String errorString = "";
   @Override
   public void init() {
     datastore = new Datastore();
@@ -85,7 +109,6 @@ public class MessageServlet extends HttpServlet {
     }
 
     String user = userService.getCurrentUser().getEmail();
-
     String text = Jsoup.clean(request.getParameter("text"), Whitelist.relaxed());
     String regex = "(https?://\\S+\\.(png|jpg|gif|mp4|mp3))";
     String replacement = "<img src=\"$1\" />";
@@ -93,8 +116,9 @@ public class MessageServlet extends HttpServlet {
     String [] textSplit = textReplaced.split("<");
     String testUrl;
     int testUrlLength;
-    boolean validUrl = true;
+    boolean validUrl = false;
     String outputString = textSplit[0];
+    BufferedImage bufferedImage = null;
 
     for (int i = 1; i < textSplit.length; i++)
     {
@@ -109,11 +133,13 @@ public class MessageServlet extends HttpServlet {
             testUrl = testUrl.substring(startIndex + 1, endIndex);
             System.out.println(testUrl);
             URL url = new URL(testUrl);
-            ImageIO.read(url.openStream());
+            bufferedImage = ImageIO.read(url.openStream());
+            File outputfile = new File("/tmp/image.jpg");
+            ImageIO.write(bufferedImage, "jpg", outputfile);
+            validUrl = true;
             outputString += testUrl.replaceAll(regex, replacement) + " ";
             }
         catch (MalformedURLException e) {
-
             System.out.println(e);
             }
         catch (Exception e) {
@@ -121,21 +147,44 @@ public class MessageServlet extends HttpServlet {
             }
     }
 
+    if (validUrl){
+      try {
+
+        ByteString imageBytes = ByteString.readFrom(new FileInputStream("/tmp/image.jpg"));
+        List<EntityAnnotation> imageLabels  = getImageLabels(imageBytes);
+        outputString += "<ul>";
+        for(EntityAnnotation label : imageLabels){
+
+          outputString += "<li>" + label.getDescription() + " " + label.getScore();
+        }
+        outputString += "</ul>";
+
+      }
+      catch(Exception e ){
+      System.out.println(e);
+    }
+  }
 
     Double messageSentimentScore = returnSentimentScore(outputString);
 
-    if (messageSentimentScore > 0.2) {
+    if (validUrl){
+    }
+
+    else {
+    if (messageSentimentScore > 0) {
       outputString = outputString + " | Message emoji   &#128515 ";
       }
 
-    if (messageSentimentScore < 0.2) {
+    if (messageSentimentScore < 0) {
       outputString = outputString + " | Message emoji   &#128542 ";
       }
+    }
 
     Message message = new Message(user, outputString);
     datastore.storeMessage(message);
     response.sendRedirect("/user-page.html?user=" + user);
   }
+
 
   public Double returnSentimentScore(String text) throws IOException {
 
@@ -152,5 +201,23 @@ public class MessageServlet extends HttpServlet {
   }
 
 
-
+  private List<EntityAnnotation> getImageLabels(ByteString byteString) throws IOException {
+    System.out.println("I am in Get Image Labels");
+    Image image = Image.newBuilder().setContent(byteString).build();
+    Feature feature = Feature.newBuilder().setType(Feature.Type.LABEL_DETECTION).build();
+    AnnotateImageRequest request =
+        AnnotateImageRequest.newBuilder().addFeatures(feature).setImage(image).build();
+    List<AnnotateImageRequest> requests = new ArrayList<>();
+    requests.add(request);
+    ImageAnnotatorClient client = ImageAnnotatorClient.create();
+    BatchAnnotateImagesResponse batchResponse = client.batchAnnotateImages(requests);
+    client.close();
+    List<AnnotateImageResponse> imageResponses = batchResponse.getResponsesList();
+    AnnotateImageResponse imageResponse = imageResponses.get(0);
+    if (imageResponse.hasError()) {
+      System.err.println("Error getting image labels: " + imageResponse.getError().getMessage());
+      return null;
+    }
+    return imageResponse.getLabelAnnotationsList();
+  }
 }

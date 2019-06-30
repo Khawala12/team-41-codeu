@@ -1,5 +1,17 @@
 <html>
 <head>
+    <style>
+        .center {
+            text-align: center;
+        }
+        h1{
+            font-family: Arial;
+            text-transform: uppercase;
+        }
+        ul{
+            font-size: 20px;
+        }
+    </style>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart']});
@@ -15,7 +27,7 @@
                 ['Arham Soft(Pvt) Limited', 4.2, 'opacity: 0.2']
 
             ]);
-            var options = {'title':'The ratings of Companies in which you can apply',
+            var options = {'title':'Ratings of companies',
                 'width':1400,
                 'height':600};
             var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
@@ -23,6 +35,12 @@
         }
     </script>
 </head>
+<h1 class="center">
+    Reviews
+</h1>
+<ul class="center">
+   Chart shows the reviews of companies based on people opinion. It will help you in applying to these companies.
+</ul>
 <body>
 <div id="chart_div"></div>
 </body>

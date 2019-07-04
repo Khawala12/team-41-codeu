@@ -15,7 +15,7 @@ public class HomeServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException {
-    
+
     UserService userService = UserServiceFactory.getUserService();
 
     boolean isUserLoggedIn = userService.isUserLoggedIn();

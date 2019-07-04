@@ -1,5 +1,5 @@
-html { 
-  background: url(img/cover4.jpg) no-repeat center center fixed; 
+html {
+  background: url(img/cover4.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -19,8 +19,8 @@ li{
 
 }
 .container_text {
+  font-family: 'Acme';font-size: 22px;
   position: absolute;
-
   text-align: left;
   width: 50%;
   top: 15em;

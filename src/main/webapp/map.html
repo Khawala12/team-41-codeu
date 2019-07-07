@@ -1,55 +1,149 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Location</title>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="Style1.css" />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
-        #map {
-            width: 1340px;
-            height: 500px;
-            position: center;
-        }
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
         }
-        .center {
+        .heading {
             text-align: center;
+            padding: 14px 16px;
+            border: 1px solid transparent;
+            text-decoration: none;
+            font-size: 40px;
         }
-        h1{
-            font-family: Arial;
-            text-transform: uppercase;
-        }
-        ul{
+        .center {
+            text-align: left;
+            padding: 25px 0;
             font-size: 20px;
+            margin-left: 98px;
         }
     </style>
 </head>
-<h1 class="center"> Location </h1>
-<ul class="center">
+
+<body BGCOLOR="white">
+<div class="container1">
+
+    <nav id="nav-menu-container">
+        <ul class="nav-menu" id="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/aboutus.html">About</a></li>
+            <li><a href="/community.html">Community</a></li>
+            <li><a href="/feed">User Posts</a></li>
+            <li ><a>Companies</a>
+                <ul>
+                    <li class="active"><a href="map.html">Location</a> </li>
+                    <li><a href="chart.html">Reviews</a> </li>
+                </ul>
+            </li>
+            <li><a href="user-page.html">Login</a></li>
+        </ul>
+    </nav><!-- #nav-menu-container -->
+</div>
+<br>
+<div class="logo">
+    <img src="img/logo.png">
+</div>
+<br>
+<br>
+<br>
+<h1 class="center">
     Landmarks highlight the software houses from Pakistan in which you can apply.
-</ul>
-<body>
-  <nav>
-    <ul id="navigation">
-      <li><a href="/">Home</a></li>
-      <li><a href="/aboutus.html">About Our Team</a></li>
-      <li><a href="/community.html">Community</a></li>
-      <li><a href="/feed.html">User Posts</a></li>
-      <li><a href="/login.html">Login</a></li>
-      <li><a href="/chart.html">Review</a></li>
-      <li><a href="/map.html">Map/Search</a></li>
-    </ul>
-  </nav>
-<div id="map"></div>
+</h1>
+<div style="position:relative;width:100%">
+    <div id="map" style="position:absolute;right:70px;top:0px;width: 1200px; height: 480px;"></div>
+</div>
 <script>
     function initMap(){
         var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: -34.397, lng: 150.644},
-            zoom: 4
+            zoom: 4,
+            styles: [
+                {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+                {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+                {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+                {
+                    featureType: 'administrative.locality',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#d59563'}]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#d59563'}]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'geometry',
+                    stylers: [{color: '#263c3f'}]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#6b9a76'}]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [{color: '#38414e'}]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry.stroke',
+                    stylers: [{color: '#212a37'}]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#9ca5b3'}]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry',
+                    stylers: [{color: '#746855'}]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry.stroke',
+                    stylers: [{color: '#1f2835'}]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#f3d19c'}]
+                },
+                {
+                    featureType: 'transit',
+                    elementType: 'geometry',
+                    stylers: [{color: '#2f3948'}]
+                },
+                {
+                    featureType: 'transit.station',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#d59563'}]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'geometry',
+                    stylers: [{color: '#17263c'}]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#515c6d'}]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.stroke',
+                    stylers: [{color: '#17263c'}]
+                }
+            ]
         });
         addLandmark(map, 31.466722, 74.236459, 'Arbisoft',
             'Offers machine learning job')

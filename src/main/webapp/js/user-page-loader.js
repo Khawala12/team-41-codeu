@@ -105,10 +105,23 @@ function fetchAboutMe(){
   });
 }
 
+function fetchCv(){
+
+  const url = '/cv?user=' + parameterUsername;
+  fetch(url).then((response) => {
+    return response.text();
+  }).then((aboutMe) => {
+    const aboutMeContainer = document.getElementById('cvStatus');
+    aboutMeContainer.innerHTML = aboutMe;
+  });
+}
+
+
 /** Fetches data and populates the UI of the page. */
 function buildUI() {
   setPageTitle();
   showMessageFormIfViewingSelf();
   fetchAboutMe();
+  fetchCv();
   fetchMessages();
 }

@@ -15,7 +15,12 @@ import java.util.concurrent.TimeUnit;
 import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.LanguageServiceClient;
 import java.text.DecimalFormat;
+import java.io.OutputStream;
+import java.io.FileInputStream;
+import java.io.File;
+
 /**
+
 
  * Responds with a hard-coded message for testing purposes.
 
@@ -26,6 +31,9 @@ import java.text.DecimalFormat;
 public class AboutMeServlet extends HttpServlet {
 
   private Datastore datastore;
+  String userGetCvName;
+
+
   public void init() {
     datastore = new Datastore();
   }
@@ -36,13 +44,20 @@ public class AboutMeServlet extends HttpServlet {
  {
    try
  {
-   response.setContentType("text/html");
-    // statement(s) that might cause exception
+
   String userEmail = request.getParameter("user");
+  userGetCvName = userEmail;
+
+
   if (userEmail == null || userEmail == ""){
     // So request is invalid
     return;
   }
+
+
+
+
+  response.setContentType("text/html");
 
   User user = datastore.getUser(userEmail);
   String userAboutMe = user.getAboutMe();
@@ -65,16 +80,54 @@ public class AboutMeServlet extends HttpServlet {
  public void doPost(HttpServletRequest request, HttpServletResponse response)
   throws IOException {
 
+    String act = request.getParameter("act");
+    String userEmailrequest = request.getParameter("user");
+
+    System.out.println(act);
+
+
+    if (act != null) {
+        System.out.println("Download Submit button is pressed Successfully");
+
+        String fileCvName = userGetCvName + ".pdf";
+        File file = new File(fileCvName);
+        OutputStream out = response.getOutputStream();
+        FileInputStream in = new FileInputStream(file);
+        byte[] buffer = new byte[4096];
+        int length;
+        while ((length = in.read(buffer)) > 0){
+            out.write(buffer, 0, length);
+        }
+        in.close();
+        out.flush();
+
+
+
+
+        // response.sendRedirect("/user-page.html?user="+);
+    }
+    else if (act == null){
+
+    UserService userServiceGet = UserServiceFactory.getUserService();
+    String userEmailGet = userServiceGet.getCurrentUser().getEmail();
+    System.out.println("About Me Get is called  wut userEmailGet " + userEmailGet);
+
 
 
     // score
     UserService userService = UserServiceFactory.getUserService();
+    String userEmail = userService.getCurrentUser().getEmail();
+
+
+
+
+
     if (!userService.isUserLoggedIn()){
       response.sendRedirect("/index.html");
       return;
     }
 
-    String userEmail = userService.getCurrentUser().getEmail();
+
     String aboutMe = Jsoup.clean(request.getParameter("about-me"), Whitelist.basic());
     Sentiment sentiment = returnSentimentScore(aboutMe);
 
@@ -89,6 +142,7 @@ public class AboutMeServlet extends HttpServlet {
     datastore.storeUser(user);
     response.sendRedirect("/user-page.html?user="+userEmail);
   }
+}
 
   public Sentiment returnSentimentScore(String text) throws IOException {
 

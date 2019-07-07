@@ -1,51 +1,18 @@
 <!DOCTYPE html>
   <html lang="zxx" class="no-js">
   <head>
-
-  <style>
+    <link rel="stylesheet" href="Style1.css" />
+    <style>
 
     body {
       margin: 0;
       padding: 0;
     }
-
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      font-size: 20px;
-    }
-    ul li{
-      display: inline-block;
-    }
-    li {
-      float: left;
-      padding: 10px 25px;
-    }
-
-    li a {
-      display: block;
-      color: black;
-      text-align: center;
-      padding: 14px 16px;
-      border: 1px solid transparent;
-      text-decoration: none;
-      transition: 0.6s ease;
-    }
-
-    li a:hover {
-      background-color: white;
-
-     }
-    ul li.menu-active a{
-      background-color: #fff;
-      color: #000;
-    }
     .center {
       padding: 25px 0;
       text-align: center;
     }
+
 
     .left {
       padding: 25px 0;
@@ -56,9 +23,9 @@
       padding: 25px 0;
       text-align: right;
     }
-
     h1{
       font-size: 3em;
+      text-align: center;
     }
     h2{
       font-size: 2em;
@@ -121,32 +88,38 @@
 
     </head>
     <body onload="addLoginOrLogoutLinkToNavigation();">
+    <header id="header" id="home">
 
-        <header id="header" id="home">
-          <div class="container">
+          <div class="container1">
 
               <nav id="nav-menu-container">
                 <ul class="nav-menu" id="navigation">
-                  <li id="logo" style="padding: 0px 100px">
-                <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
-              </li>
-                  <li class="menu-active"><a href="/">Home</a></li>
-
+                    <li class="active"><a href="/">Home</a></li>
                   <li><a href="/aboutus.html">About</a></li>
                   <li><a href="/community.html">Community</a></li>
-                  <li><a href="map.html">Map/Search</a> </li>
-                  <li><a href="chart.html">Review</a> </li>
                   <li><a href="/feed">User Posts</a></li>
+                  <li><a>Companies</a>
+                      <ul>
+                        <li><a href="map.html">Location</a> </li>
+                        <li><a href="chart.html">Reviews</a> </li>
+                      </ul>
+                  </li>
 
+                  <li><a href="user-page.html">Login</a></li>
                 </ul>
               </nav><!-- #nav-menu-container -->
           </div>
         </header><!-- #header -->
+    <br>
 
+    <div class="logo">
+      <img src="img/logo.png">
+    </div>
         <div class="maindiv">
 
         </div>
       <!-- start banner Area -->
+    <br>
       <section id="home" >
         <div >
           <div class="center">

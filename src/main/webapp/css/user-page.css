@@ -90,8 +90,11 @@ h3 {
   /* align-content: center; */
   border-left: 6px solid red;
   /* border: thin solid black; */
-  border-radius: 5px;
   margin-top: 20px;
+
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 
 }
 

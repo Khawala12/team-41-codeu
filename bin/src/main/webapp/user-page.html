@@ -1,0 +1,218 @@
+<!--
+Copyright 2019 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Page</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/user-page.css">
+    <!-- <link rel="stylesheet" href="/css/main.css"> -->
+    <script src="/js/user-page-loader.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
+    <script>
+      function requestTranslationAboutMe() {
+        const text = document.getElementById('text').value;
+        const languageCode = document.getElementById('language').value;
+
+        const resultContainer = document.getElementById('result');
+        resultContainer.innerText = 'Loading...';
+
+        const params = new URLSearchParams();
+        params.append('text', text);
+        params.append('languageCode', languageCode);
+
+        fetch('/translate', {
+          method: 'POST',
+          body: params
+        }).then(response => response.text())
+        .then((translatedMessage) => {
+          resultContainer.innerText = translatedMessage;
+        });
+      }
+    </script>
+    <script>
+      function requestTranslationPost() {
+        const text = document.getElementById('message-input').value;
+        const languageCode = document.getElementById('message-language').value;
+
+        const resultContainer = document.getElementById('message-result');
+        resultContainer.innerText = 'Loading...';
+
+        const params = new URLSearchParams();
+        params.append('text', text);
+        params.append('languageCode', languageCode);
+
+        fetch('/translate', {
+          method: 'POST',
+          body: params
+        }).then(response => response.text())
+        .then((translatedMessage) => {
+          resultContainer.innerText = translatedMessage;
+        });
+      }
+    </script>
+    <style>
+
+    input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+
+
+  </style>
+
+  </head>
+  <body onload="buildUI();">
+    <nav>
+      <ul id="navigation">
+        <li><a href="/">Home</a></li>
+        <li><a href="/aboutus.html">About Our Team</a></li>
+      </ul>
+    </nav>
+
+  <div style="display: inline-block;width: 100%;" class = "displayUser">
+    <img src="img/icon.png" style="float:left;width:70px;height:70px;"   />
+    <h1 id="page-title">User Page</h1>
+  </div>
+
+
+  <hr/>
+  <br/>
+  <br/>
+
+    <!-- <h1 id="page-title">User Page</h1> -->
+    <h2> About Me </h2>
+    <div id="about-me-container" class="displayAbout">Loading...</div>
+    <hr/>
+    <br/>
+
+    <h2> My Profile </h2>
+
+    <div id="cvStatus" class="displayAbout">Loading...</div>
+
+
+    <form action="/cv" method="post" enctype="multipart/form-data">
+      Select CV to upload:
+      <input type="file" name="fileToUpload" id="fileToUpload" accept="application/pdf">
+      <input type="submit" value="Upload CV" name="submit"  id = "formsubmitbutton">
+    </form>
+
+    <br/>
+
+    <hr/>
+    <br/>
+
+
+
+
+
+  <div id="about-me-form" class = "displayUser">
+
+
+
+  <form action="/about" method="POST" class = "displayUser">
+    <h3>Preview CV</h3>
+
+    <br/>
+     <input type="hidden">
+    <input type="submit" name="act" value="Preview" id="formsubmitbutton" download/>
+
+    <br/>
+    <hr/>
+
+    <h3>enter new about me</h3>
+    <textarea id ="text" name="about-me" placeholder="about me" ></textarea>
+
+    <br/>
+    <input type="submit" value="Submit" id = "formsubmitbutton">
+
+
+
+
+
+  </form>
+  <select id="language">
+    <option value="es">English</option>
+     <option value="zh">Chinese</option>
+     <option value="es">Spanish</option>
+     <option value="hi">Hindi</option>
+     <option value="ar">Arabic</option>
+   </select>
+
+  <button onclick="requestTranslationAboutMe();">Translate</button>
+
+  <hr/>
+  <div id="result"></div>
+
+
+</div>
+
+    <form id="message-form" action="/messages" method="POST" class="message-body">
+      <h3> Enter a new message </h3>
+      <br/>
+      <textarea name="text" id="message-input" required></textarea>
+      <br/>
+      <input type="submit" value="Submit" id = "formsubmitbutton1">
+    </form>
+
+    <select id="message-language">
+      <option value="es">English</option>
+      <option value="zh">Chinese</option>
+      <option value="es">Spanish</option>
+      <option value="hi">Hindi</option>
+      <option value="ar">Arabic</option>
+    </select>
+
+    <button onclick="requestTranslationPost();">Translate</button>
+
+    <hr/>
+    <div id="message-result"></div>
+
+    <hr/>
+
+    <!-- <script>
+      const config = {removePlugins: [ 'Heading', 'List', 'ImageUpload' ]};
+      ClassicEditor.create(document.getElementById('message-input'), config );
+    </script> -->
+    <div id="message-container" class = "container">Loading...</div>
+
+  </body>
+</html>

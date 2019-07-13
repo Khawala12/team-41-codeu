@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+  <html lang="zxx" class="no-js">
+  <head>
+    <link rel="stylesheet" href="Style1.css" />
+    <style>
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-size: 20px;
+    }
+    ul li{
+      display: inline-block;
+    }
+    li {
+      float: left;
+      padding: 10px 25px;
+      border-radius: 5px;
+    }
+
+    li a {
+      display: block;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: 0.6s ease;
+      border-radius: 5px;
+    }
+
+    li a:hover {
+      background-color: white;
+
+     }
+    ul li.menu-active a{
+      background-color: #fff;
+      color: #000;
+    }
+
+    .center {
+      padding: 25px 0;
+      text-align: center;
+      background-color: rgba(255,255,255,0.5);
+    }
+
+
+    .left {
+      padding: 25px 0;
+      text-align: left;
+    }
+
+    .right {
+      padding: 25px 0;
+      text-align: right;
+    }
+    h1{
+      font-size: 3em;
+      text-align: center;
+    }
+    h2{
+      font-size: 2em;
+    }
+    h3{
+      font-size: 2em;
+    }
+    h4{
+      font-size: 1.5em;
+    }
+    h5{
+      font-size: 3em;
+    }
+    h6{
+      font-size: 3em;
+    }
+    body{
+      background: url("https://blog.rackspace.com/wp-content/uploads/2016/09/iStock_81219573_1200px.jpg") no-repeat center center fixed;
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      animation: slider 20s infinite linear;
+    }
+    @keyframes slider {
+      0% {
+        background: url("https://cdn.arstechnica.net/wp-content/uploads/2019/03/codersTOP.jpg")no-repeat center center fixed;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+      }
+      35% {
+        background: url("https://blog.insidesales.com/wp-content/uploads/2019/02/Young-city-professional-man-success-mindset-getty.jpg")no-repeat center center fixed;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+      }
+      75% {
+        background: url("https://cdn-images-1.medium.com/max/2600/1*wZCyVKtHxv2a7u8lGPVMrg.jpeg")no-repeat center center fixed;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+      }
+
+    }
+     </style>
+
+      <script src="/js/navigation-loader.js"></script>
+
+    </head>
+    <body onload="addLoginOrLogoutLinkToNavigation();">
+
+        <header id="header" id="home">
+          <div class="container">
+              
+              <nav id="nav-menu-container" style="background-color: rgba(255,255,255,0.5);">
+
+                <ul class="nav-menu center" id="navigation">
+                    <li class="active"><a href="/">Home</a></li>
+                  <li><a href="/aboutus.html">About</a></li>
+                  <li><a href="/community.html">Community</a></li>
+                  <li><a href="/feed">User Posts</a></li>
+                  <li><a>Companies</a>
+                      <ul>
+                        <li><a href="map.html">Location</a> </li>
+                        <li><a href="chart.html">Reviews</a> </li>
+                      </ul>
+                  </li>
+
+                  <li><a href="user-page.html">Login</a></li>
+                </ul>
+              </nav><!-- #nav-menu-container -->
+          </div>
+        </header><!-- #header -->
+    <br>
+
+    <div class="logo">
+      <img src="img/logo.png">
+    </div>
+        <div class="maindiv">
+
+        </div>
+      <!-- start banner Area -->
+    <br>
+      <section id="home" >
+        <div >
+          <div class="center">
+            <div >
+              <h1 >
+                All you want is here
+              </h1>
+              <br>
+              <br>
+              <div class="icon">
+                <img src="img/s5.png" alt="">
+              </div>
+              <br>
+              <br>
+              <h3 >
+                A quick and easy way to showcase your skills and land your dream job.
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End banner Area -->
+
+      <!-- Start we-offer Area -->
+      <section id="offer">
+        <div >
+          <div class="center">
+            <div >
+              <div >
+                <h1 >Our Offered Services</h1>
+                <h4 style="color: black;">We are passionate about finding you something you love.</h4>
+              </div>
+            </div>
+          </div>
+          <div >
+            <div >
+              <div class="center">
+                <div >
+                  <img src="img/s1.png" alt="">
+                </div>
+                <div >
+                  <a href="map.html"><h3>Unlimited Offers</h3></a>
+                  <p style="color: black; font-size: 16px">We will help you find start-ups and software houses all over the country.</p>
+                </div>
+              </div>
+
+            </div>
+            <div >
+              <div class="center">
+                <div >
+                  <img src="img/s3.png" alt="">
+                </div>
+                <div >
+                  <a href="/feed"><h3>Endless Support</h3></a>
+                  <p style="color: black; font-size: 16px">We will provide you with a platform to discuss your ideas or issues with others.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End we-offer Area -->
+
+
+
+
+    </body>
+  </html>

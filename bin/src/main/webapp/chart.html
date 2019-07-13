@@ -1,0 +1,78 @@
+<html>
+<head>
+    <link rel="stylesheet" href="Style1.css" />
+    <style>
+        .center {
+            text-align: center;
+        }
+        h1{
+            font-family: Arial;
+            text-transform: uppercase;
+        }
+        .center {
+            text-align: left;
+            padding: 25px 0;
+            font-size: 20px;
+            margin-left: 49px;
+        }
+    </style>
+</head>
+
+<body bgcolor="white">
+<div class="container1">
+    <nav id="nav-menu-container">
+        <ul class="nav-menu" id="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/aboutus.html">About</a></li>
+            <li><a href="/community.html">Community</a></li>
+            <li><a href="/feed">User Posts</a></li>
+            <li ><a>Companies</a>
+                <ul>
+                    <li><a href="map.html">Location</a> </li>
+                    <li  class="active"><a href="chart.html">Reviews</a> </li>
+                </ul>
+            </li>
+            <li><a href="user-page.html">Login</a></li>
+        </ul>
+    </nav><!-- #nav-menu-container -->
+</div>
+<br>
+<div class="logo">
+    <img src="img/logo.png">
+</div>
+<br>
+<br>
+<br>
+<h2 class="center">
+    Chart shows the reviews of companies based on people opinion.
+</h2>
+<body>
+<div style="position:relative;width:100%">
+    <div id="chart_div" style="position:absolute;right:100px;top:-30px;width: 1000px; height: 500px;"></div>
+</div>
+</body>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Name', 'Ratings', { role: 'style' } ],
+                ['Arbisoft', 4.5, 'color: gray'],
+                ['Xorlogics', 3.9, 'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2'],
+                ['NineSol Technologies', 4.2, 'opacity: 0.2'],
+                ['Avaib', 4.8, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+                ['Genetech Solutions', 4.1, 'color: #76A7FA'],
+                ['Arham Soft(Pvt) Limited', 4.2, 'opacity: 0.2']
+
+            ]);
+            var options = {'title':'Ratings of companies'};
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+
+</body>
+</html>

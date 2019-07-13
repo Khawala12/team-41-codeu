@@ -1,190 +1,90 @@
 <!DOCTYPE html>
-  <html lang="zxx" class="no-js">
-  <head>
-    <link rel="stylesheet" href="Style1.css" />
-    <style>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Hello Google Cloud Storage</title>
+</head>
 
-    body {
-      margin: 0;
-      padding: 0;
-    }
-    .center {
-      padding: 25px 0;
-      text-align: center;
-    }
+<body onload="setDownloadDefaults()">
+  <h1>Hello Google Cloud Storage!</h1>
 
-
-    .left {
-      padding: 25px 0;
-      text-align: left;
-    }
-
-    .right {
-      padding: 25px 0;
-      text-align: right;
-    }
-    h1{
-      font-size: 3em;
-      text-align: center;
-    }
-    h2{
-      font-size: 2em;
-    }
-    h3{
-      font-size: 2em;
-    }
-    h4{
-      font-size: 1.5em;
-    }
-    h5{
-      font-size: 3em;
-    }
-    h6{
-      font-size: 3em;
-    }
-    body{
-      background: url("https://blog.rackspace.com/wp-content/uploads/2016/09/iStock_81219573_1200px.jpg") no-repeat center center fixed;
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      animation: slider 20s infinite linear;
-    }
-    @keyframes slider {
-      0% {
-        background: url("https://cdn.arstechnica.net/wp-content/uploads/2019/03/codersTOP.jpg")no-repeat center center fixed;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
+  <table>
+    <tr>
+      <td style="font-weight: bold;">Upload a file to Google Cloud Storage:</td>
+    </tr>
+    <tr>
+<!--[START user_input]-->      
+      <td>
+        <form action="/index.html" enctype="text/plain" method="get" name="putFile" id="putFile">
+          <div>
+            Bucket: <input type="text" name="bucket" />
+            File Name: <input type="text" name="fileName" />
+            <br /> File Contents: <br />
+            <textarea name="content" id="content" rows="3" cols="60"></textarea>
+            <br />
+            <input type="submit" onclick='uploadFile(this)' value="Upload Content" />
+          </div>
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold;">Download a file from Google Cloud Storage:</td>
+    </tr>
+    <tr>
+      <td>
+        <form name="getFile">
+          <div>
+            Bucket: <input type="text" name="bucket" id="bucket" />
+            File Name: <input type="text" name="fileName" id="fileName" />
+          </div>
+        </form>
+        <form action="/index.html" method="get" name="submitGet">
+          <div>
+            <input type="submit" onclick='changeGetPath(this)' value="Download Content" />
+          </div>
+        </form>
+      </td>
+    </tr>
+<!--[END user_input]-->    
+  </table>
+  <script>
+      function setDownloadDefaults() {
+        var url = location.search;
+        var bucketArg = url.match(/bucket=[^&]*&/);
+        if (bucketArg !== null) {
+          document.getElementById("bucket").value = bucketArg.shift().slice(7, -1);
+        }
+        var fileArg = url.match(/fileName=[^&]*&/);
+        if (fileArg !== null) {
+          document.getElementById("fileName").value = fileArg.shift().slice(9, -1);
+        }
       }
-      35% {
-        background: url("https://blog.insidesales.com/wp-content/uploads/2019/02/Young-city-professional-man-success-mindset-getty.jpg")no-repeat center center fixed;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
+      function changeGetPath() {
+        var bucket = document.forms["getFile"]["bucket"].value;
+        var filename = document.forms["getFile"]["fileName"].value;
+        if (bucket == null || bucket == "" || filename == null || filename == "") {
+          alert("Both Bucket and FileName are required");
+          return false;
+        } else {
+          document.submitGet.action = "/gcs/" + bucket + "/" + filename;
+        }
       }
-      75% {
-        background: url("https://cdn-images-1.medium.com/max/2600/1*wZCyVKtHxv2a7u8lGPVMrg.jpeg")no-repeat center center fixed;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
+      function uploadFile() {
+        var bucket = document.forms["putFile"]["bucket"].value;
+        var filename = document.forms["putFile"]["fileName"].value;
+        if (bucket == null || bucket == "" || filename == null || filename == "") {
+          alert("Both Bucket and FileName are required");
+          return false;
+        } else {
+          var postData = document.forms["putFile"]["content"].value;
+          document.getElementById("content").value = null;
+          var request = new XMLHttpRequest();
+          request.open("POST", "/gcs/" + bucket + "/" + filename, false);
+          request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+          request.send(postData);
+        }
       }
-
-    }
-     </style>
-
-      <script src="/js/navigation-loader.js"></script>
-
-    </head>
-    <body onload="addLoginOrLogoutLinkToNavigation();">
-    <header id="header" id="home">
-
-          <div class="container1">
-
-              <nav id="nav-menu-container">
-                <ul class="nav-menu" id="navigation">
-                    <li class="active"><a href="/">Home</a></li>
-                  <li><a href="/aboutus.html">About</a></li>
-                  <li><a href="/community.html">Community</a></li>
-                  <li><a href="/feed">User Posts</a></li>
-                  <li><a>Companies</a>
-                      <ul>
-                        <li><a href="map.html">Location</a> </li>
-                        <li><a href="chart.html">Reviews</a> </li>
-                      </ul>
-                  </li>
-
-                  <li><a href="user-page.html">Login</a></li>
-                </ul>
-              </nav><!-- #nav-menu-container -->
-          </div>
-        </header><!-- #header -->
-    <br>
-
-    <div class="logo">
-      <img src="img/logo.png">
-    </div>
-        <div class="maindiv">
-
-        </div>
-      <!-- start banner Area -->
-    <br>
-      <section id="home" >
-        <div >
-          <div class="center">
-            <div class="center">
-              <h1 class="center">
-                All you want is here
-              </h1>
-              <br>
-              <br>
-              <div class="icon">
-                <img src="img/s5.png" alt="">
-              </div>
-              <br>
-              <br>
-              <h3 >
-                A quick and easy way to showcase your skills and land your dream job.
-              </h3>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- End banner Area -->
-
-      <!-- Start we-offer Area -->
-      <section id="offer">
-        <div >
-          <div class="center">
-            <div >
-              <div >
-                <h1 >Our Offered Services</h1>
-                <h4 style="color: black;">We are passionate about finding you something you love.</h4>
-              </div>
-            </div>
-          </div>
-          <div >
-            <div >
-              <div class="center">
-                <div >
-                  <img src="img/s1.png" alt="">
-                </div>
-                <div >
-                  <a href="map.html"><h3>Unlimited Offers</h3></a>
-                  <p style="color: black; font-size: 16px">We will help you find start-ups and software houses all over the country.</p>
-                </div>
-              </div>
-
-            </div>
-            <div >
-              <div class="center">
-                <div >
-                  <img src="img/s3.png" alt="">
-                </div>
-                <div >
-                  <a href="/feed"><h3>Endless Support</h3></a>
-                  <p style="color: black; font-size: 16px">We will provide you with a platform to discuss your ideas or issues with others.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- End we-offer Area -->
-
-
-
-
-    </body>
-  </html>
+    </script>
+</body>
+</html>
+ 

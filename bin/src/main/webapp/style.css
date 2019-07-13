@@ -1,0 +1,65 @@
+html {
+  background: url(img/cover4.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+li{
+  color: #85C1E9;
+  font-size: 30px;
+
+}
+.container_text {
+  font-family: 'Acme';font-size: 22px;
+  position: absolute;
+  text-align: left;
+  width: 50%;
+  top: 15em;
+  color: white;
+}
+
+.image {
+   position: relative;
+   width: 100%; /* for IE 6 */
+}
+
+h2 span {
+   color: white;
+   font: bold 59px/45px Helvetica, Sans-Serif;
+   letter-spacing: 2px;
+   padding: 10px;
+}
+
+h2 {
+   position: absolute;
+   top: 100px;
+   left: 0;
+   width: 100%;
+}
+
+img{
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+}
+
+img.bg {
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+}

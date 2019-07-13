@@ -124,15 +124,77 @@ limitations under the License.
     <hr/>
     <br/>
 
+    <h2> My Profile </h2>
+
+    <div id="cvStatus" class="displayAbout">Loading...</div>
+
+
+<!--     <form action="/cv" method="post" enctype="multipart/form-data">
+      Select CV to upload:
+      <input type="file" name="fileToUpload" id="fileToUpload" accept="application/pdf">
+      <input type="submit" value="Upload CV" name="submit"  id = "formsubmitbutton">
+    </form> -->
+
+    <form method="POST" action="/create" enctype="multipart/form-data">
+
+      <div>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" size="40" value="" />
+      </div>
+
+      <div>
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" size="40" value="" />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Post content</label>
+        <textarea name="description" id="description" rows="10" cols="50"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="filename">CV</label>
+        <!-- Allow only image file types to be selected -->
+        <input type="file" name="image" accept="application/pdf">
+      </div>
+
+      <button type="submit">Save</button>
+
+    </form>
+
+    <br/>
+
+    <hr/>
+    <br/>
+
+
+
+
 
   <div id="about-me-form" class = "displayUser">
 
 
+
   <form action="/about" method="POST" class = "displayUser">
+    <h3>Preview CV</h3>
+
+    <br/>
+     <input type="hidden">
+    <input type="submit" name="act" value="Preview" id="formsubmitbutton" download/>
+
+    <br/>
+    <hr/>
+
     <h3>enter new about me</h3>
-    <textarea id ="text" name="about-me" placeholder="about me" required></textarea>
+    <textarea id ="text" name="about-me" placeholder="about me" ></textarea>
+
     <br/>
     <input type="submit" value="Submit" id = "formsubmitbutton">
+
+
+
+
+
   </form>
   <select id="language">
     <option value="es">English</option>
@@ -146,7 +208,7 @@ limitations under the License.
 
   <hr/>
   <div id="result"></div>
-  
+
 
 </div>
 
@@ -178,6 +240,6 @@ limitations under the License.
       ClassicEditor.create(document.getElementById('message-input'), config );
     </script> -->
     <div id="message-container" class = "container">Loading...</div>
-    
-  </body> 
+
+  </body>
 </html>

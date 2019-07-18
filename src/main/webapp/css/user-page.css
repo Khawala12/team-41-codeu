@@ -80,10 +80,41 @@ h3 {
   font-weight: 300;
 }
 
+
+.message-container img {
+  display: block;
+  margin-top: 25px;
+  max-width: 40%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
 .message-body img {
   display: block;
   margin-top: 25px;
   max-width: 40%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.message-container {
+  display: block;
+  margin-top: 25px;
+  max-width: 40%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.message-body {
+  display: block;
+  margin-top: 25px;
+  max-width: 40%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
 /* Give each message a rounded border. */
 .message-div {
@@ -92,6 +123,9 @@ h3 {
   /* border: thin solid black; */
   border-radius: 5px;
   margin-top: 20px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 
 }
 
@@ -99,6 +133,9 @@ h3 {
 .message-header {
   border-bottom: thin solid black;
   padding: 5px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
 
 #formsubmitbutton {

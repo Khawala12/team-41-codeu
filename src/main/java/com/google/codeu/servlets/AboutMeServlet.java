@@ -18,6 +18,16 @@ import java.text.DecimalFormat;
 import java.io.OutputStream;
 import java.io.FileInputStream;
 import java.io.File;
+import java.io.*;
+
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.Bucket;
+import com.google.cloud.storage.BucketInfo;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 /**
 
@@ -88,21 +98,84 @@ public class AboutMeServlet extends HttpServlet {
 
     if (act != null) {
         System.out.println("Download Submit button is pressed Successfully");
-
         String fileCvName = userGetCvName + ".pdf";
-        File file = new File(fileCvName);
-        OutputStream out = response.getOutputStream();
-        FileInputStream in = new FileInputStream(file);
-        byte[] buffer = new byte[4096];
-        int length;
-        while ((length = in.read(buffer)) > 0){
-            out.write(buffer, 0, length);
+
+        Storage storage = StorageOptions.getDefaultInstance().getService();
+
+
+
+        // Bucket bucket=storage.get(("abdullahteam41codeu"));
+
+
+        BlobId blobId = BlobId.of("abdullahteam41codeu", fileCvName);
+        Blob blob = storage.get(blobId);
+
+        if (blob == null){
+
+          BlobId blobId1 = BlobId.of("abdullahteam41codeu", "Brochure.pdf");
+          Blob blob1 = storage.get(blobId1);
+
+
+          response.setContentType("application/pdf");
+
+          // Blob blob = storage.get("abdullahteam41codeu",fileCvName);
+
+          System.out.println(blob1);
+
+          System.out.println("Blob is gotten");
+
+          // InputStream in = blob.getBinaryStream();
+          OutputStream out1 = response.getOutputStream();
+          byte[] content1 = blob1.getContent();
+          // byte[] buff = blob.getBytes(1,(int)blob.getLength());
+
+
+          out1.write(content1);
+          out1.flush();
+          out1.close();
+
+
+
         }
-        in.close();
+        else {
+        response.setContentType("application/pdf");
+
+        // Blob blob = storage.get("abdullahteam41codeu",fileCvName);
+
+        System.out.println(blob);
+
+        System.out.println("Blob is gotten");
+
+        // InputStream in = blob.getBinaryStream();
+        OutputStream out = response.getOutputStream();
+        byte[] content = blob.getContent();
+        // byte[] buff = blob.getBytes(1,(int)blob.getLength());
+
+        System.out.println(content);
+
+        out.write(content);
         out.flush();
+        out.close();
+
+        // ReadChannel readChannel = blob.reader();
+        // FileOutputStream fileOuputStream = new FileOutputStream(outputFileName);
+        // fileOuputStream.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE);
+        // fileOuputStream.close();
 
 
+        // File file = new File(fileCvName);
+        // OutputStream out = response.getOutputStream();
+        // FileInputStream in = new FileInputStream(file);
+        // byte[] buffer = new byte[4096];
+        // int length;
+        // while ((length = in.read(buffer)) > 0){
+        //     out.write(buffer, 0, length);
+        // }
+        // in.close();
+        // out.flush();
 
+
+      }
 
         // response.sendRedirect("/user-page.html?user="+);
     }

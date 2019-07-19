@@ -1,5 +1,12 @@
 package com.google.codeu.servlets;
 
+import com.google.cloud.storage.Blob;
+
+import com.google.cloud.storage.Bucket;
+import com.google.cloud.storage.BucketInfo;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -67,6 +74,15 @@ public class UploadCV extends HttpServlet {
         String applicationPath = request.getServletContext().getRealPath("");
         // constructs path of the dzzirectory to save uploaded file
         String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
+        Storage storage = StorageOptions.getDefaultInstance().getService();
+
+
+        // Bucket bucket = storage.create(BucketInfo.of("abdullahteam41codeu"));
+
+        Bucket bucket=storage.get(("abdullahteam41codeu"));
+        // String value = "Hello, World!";
+        // byte[] bytes12 = value.getBytes("UTF_8");
+        // Blob blob = bucket.create("my-first-blob", bytes12);
 
 
         UserService userService = UserServiceFactory.getUserService();
@@ -90,22 +106,23 @@ public class UploadCV extends HttpServlet {
 
         try {
 
-          // System.out.println("Working Directory = " +
-          //     System.getProperty("user.dir"));
-
-          File file = new File(fileCvName);
-
-
-          out = new FileOutputStream(file);
+          //
+          // File file = new File(fileCvName);
+          //
+          //
+          // out = new FileOutputStream(file);
           filecontent = filePart.getInputStream();
 
-          int read = 0;
-          final byte[] bytes = new byte[1024];
+          Blob blob=bucket.create(fileCvName,filecontent,"application/pdf");
 
-          while ((read = filecontent.read(bytes)) != -1) {
-              out.write(bytes, 0, read);
-
-        }
+          System.out.println("Stored to bucket Successfully");
+        //   int read = 0;
+        //   final byte[] bytes = new byte[1024];
+        //
+        //   while ((read = filecontent.read(bytes)) != -1) {
+        //       out.write(bytes, 0, read);
+        //
+        // }
         System.out.println("CV writed Successfully");
       }
        catch (Exception fne) {

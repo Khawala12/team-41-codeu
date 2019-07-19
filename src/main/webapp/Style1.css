@@ -5,7 +5,7 @@ ul{
 }
 ul li{
     float:left;
-    width:180px;
+    width:140px;
     height:50px;
     opacity: .8;
     line-height: 40px;
@@ -38,10 +38,7 @@ ul li:hover ul li{
     width:100px;
     height: auto;
 }
-.container1{
-    max-width: 1200px;
-    margin:auto;
-}
+
 ul li.active a{
     background-color: white;
     color: #000;

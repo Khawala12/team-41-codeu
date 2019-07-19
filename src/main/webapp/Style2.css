@@ -1,0 +1,124 @@
+.slider{
+    height: 500px;
+    width: 100%;
+    background-color: gray;
+    overflow: hidden;
+}
+.sliderchild{
+    height: 500px;
+    width: 500%;
+    background-color: white;
+    animation: slider infinite 20s 5s;
+}
+.imagecon{
+    height: 500px;
+    width: 20%;
+    background-color: gray;
+    float:left;
+}
+.cont{
+    text-align: center;
+    position: relative;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+.cont span{
+    font-family: sans-serif;
+    width: 100%;
+    display: block;
+}
+
+.text1{
+    color: black;
+    text-transform: uppercase;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+    position: relative;
+    background: white;
+    animation: text infinite 3s 2s;
+}
+.text2{
+    color: darkblue;
+    font-size: 30px;
+}
+.center {
+    padding: 25px 0;
+    text-align: center;
+}
+@keyframes text {
+    0%{
+        margin-bottom: -40px;
+    }
+    30%{
+        letter-spacing: 40px;
+        margin-bottom: -40px;
+    }
+    85%{
+        letter-spacing: 8px;
+        margin-bottom: -40px;
+    }
+    100%{
+        letter-spacing: 8px;
+        margin-bottom: 20px;
+    }
+}
+.imagecon:nth-child(1){
+    background-image: url("https://content.fortune.com/wp-content/uploads/2018/01/asana-best-workplaces-tech-2018.jpg?resize=1200,600");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imagecon:nth-child(2){
+    background-image: url("https://d3timt52sxdbq0.cloudfront.net/wp-content/uploads/2019/02/project_manager.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imagecon:nth-child(3){
+    background-image: url("img/header-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imagecon:nth-child(4){
+    background-image: url("https://content.fortune.com/wp-content/uploads/2018/01/asana-best-workplaces-tech-2018.jpg?resize=1200,600");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@keyframes slider {
+    16.6%{
+        margin-left: -100%;
+    }
+    33.2%{
+        margin-left: -100%;
+    }
+    49.8%{
+        margin-left: -200%;
+    }
+    66.4%{
+        margin-left: -200%;
+    }
+    83.0%{
+        margin-left: -300%;
+    }
+    100%{
+        margin-left: -300%;
+    }
+}
+button{
+    padding: 20px;
+    border: none;
+    background: white;
+    font-size: 30px;
+    color: black;
+    position: absolute;
+    top:45%;
+}
+.next{
+    border-radius: 10px 0px 0px 10px;
+    margin-left: 1310px;
+}
+.prew{
+    border-radius: 0px 10px 10px 0px;
+}

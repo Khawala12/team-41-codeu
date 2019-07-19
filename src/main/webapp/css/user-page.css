@@ -69,6 +69,20 @@ h3 {
   width: 30%;
 }
 
+#text {
+  background-color: transparent;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  letter-spacing: 5px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid red;
+  margin: 20px 50px;
+  width: 30%;
+}
+
+
 .displayUser {
   background-color: transparent;
 }
@@ -94,6 +108,7 @@ h3 {
   display: block;
   margin-top: 25px;
   max-width: 40%;
+	color: black;
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
@@ -111,9 +126,9 @@ h3 {
 .message-body {
   display: block;
   margin-top: 25px;
-  max-width: 40%;
+  max-width: 80%;
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: transparent;
   padding: 20px;
 }
 /* Give each message a rounded border. */

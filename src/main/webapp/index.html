@@ -2,91 +2,22 @@
   <html lang="zxx" class="no-js">
   <head>
     <link rel="stylesheet" href="Style1.css" />
+    <link rel="stylesheet" href="Style2.css" />
+  </head>
     <style>
 
     body {
       margin: 0;
       padding: 0;
     }
-    .center {
-      padding: 25px 0;
-      text-align: center;
-    }
-
-
-    .left {
-      padding: 25px 0;
-      text-align: left;
-    }
-
-    .right {
-      padding: 25px 0;
-      text-align: right;
-    }
-    h1{
-      font-size: 3em;
-      text-align: center;
-    }
-    h2{
-      font-size: 2em;
-    }
-    h3{
-      font-size: 2em;
-    }
-    h4{
-      font-size: 1.5em;
-    }
-    h5{
-      font-size: 3em;
-    }
-    h6{
-      font-size: 3em;
-    }
-    body{
-      background: url("https://blog.rackspace.com/wp-content/uploads/2016/09/iStock_81219573_1200px.jpg") no-repeat center center fixed;
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      animation: slider 20s infinite linear;
-    }
-    @keyframes slider {
-      0% {
-        background: url("https://cdn.arstechnica.net/wp-content/uploads/2019/03/codersTOP.jpg")no-repeat center center fixed;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-      }
-      35% {
-        background: url("https://blog.insidesales.com/wp-content/uploads/2019/02/Young-city-professional-man-success-mindset-getty.jpg")no-repeat center center fixed;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-      }
-      75% {
-        background: url("https://cdn-images-1.medium.com/max/2600/1*wZCyVKtHxv2a7u8lGPVMrg.jpeg")no-repeat center center fixed;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-      }
-
-    }
-     </style>
+    </style>
 
       <script src="/js/navigation-loader.js"></script>
+      <script type="text/javascript">
+          var slider_content=document.getElementsByClassName('sliderchild');
 
-    </head>
+      </script>
+
     <body onload="addLoginOrLogoutLinkToNavigation();">
     <header id="header" id="home">
 
@@ -97,13 +28,18 @@
                     <li class="active"><a href="/">Home</a></li>
                   <li><a href="/aboutus.html">About</a></li>
                   <li><a href="/community.html">Community</a></li>
-                  <li><a href="/feed">User Posts</a></li>
+                  <li><a href="/feed.html">User Posts</a></li>
+
                   <li><a>Companies</a>
                       <ul>
                         <li><a href="map.html">Location</a> </li>
                         <li><a href="chart.html">Reviews</a> </li>
                       </ul>
                   </li>
+
+
+
+                <li><a href="user-page.html">Login</a></li>
 
                 </ul>
               </nav><!-- #nav-menu-container -->
@@ -114,76 +50,70 @@
     <div class="logo">
       <img src="img/logo.png">
     </div>
-        <div class="maindiv">
-
-        </div>
-      <!-- start banner Area -->
-    <br>
-      <section id="home" >
-        <div >
-          <div class="center">
-            <div class="center">
-              <h1 class="center">
-                All you want is here
-              </h1>
-              <br>
-              <br>
-              <div class="icon">
-                <img src="img/s5.png" alt="">
+    <body BGCOLOR="white">
+    <div class="slider">
+      <div class="sliderchild">
+          <div class="imagecon">
+              <div class="cont">
+                  <span class="text1">Welcome to</span>
+                  <span class="text2">jobHire</span>
               </div>
-              <br>
-              <br>
-              <h3 >
-                A quick and easy way to showcase your skills and land your dream job.
-              </h3>
-            </div>
           </div>
-        </div>
-      </section>
-      <!-- End banner Area -->
 
-      <!-- Start we-offer Area -->
-      <section id="offer">
-        <div >
-          <div class="center">
-            <div >
-              <div >
-                <h1 >Our Offered Services</h1>
-                <h4 style="color: black;">We are passionate about finding you something you love.</h4>
+          <div class="imagecon">
+              <div class="cont">
+                  <h1 style="color: white; font-style: oblique; font-size: 22px">jobHire provides a quick and easy way to showcase your skills and land your dream jobs.</h1>
+                  <h2 style="color: white; font-style: oblique">We are passionate about finding you something you love.</h2>
+                  <h2 style="color: white; font-style: oblique">We will provide you with a platform to discuss your ideas or issues with others.</h2>
               </div>
-            </div>
           </div>
-          <div >
-            <div >
-              <div class="center">
-                <div >
-                  <img src="img/s1.png" alt="">
-                </div>
-                <div >
-                  <a href="map.html"><h3>Unlimited Offers</h3></a>
-                  <p style="color: black; font-size: 16px">We will help you find start-ups and software houses all over the country.</p>
-                </div>
-              </div>
 
-            </div>
-            <div >
-              <div class="center">
-                <div >
-                  <img src="img/s3.png" alt="">
-                </div>
-                <div >
-                  <a href="/feed"><h3>Endless Support</h3></a>
-                  <p style="color: black; font-size: 16px">We will provide you with a platform to discuss your ideas or issues with others.</p>
-                </div>
-              </div>
-            </div>
+          <div class="imagecon">
+              <section id="offer">
+                  <div >
+                      <div class="center">
+                          <div >
+                              <div >
+                                  <h1 style="color: black; font-size: 25px">Our Offered Services</h1>
+                              </div>
+                          </div>
+                      </div>
+                      <div >
+                          <div >
+                              <div class="center">
+                                  <div >
+                                      <img src="img/s1.png" alt="">
+                                  </div>
+                                  <div >
+                                      <a href="map.html"><h3>Unlimited Offers</h3></a>
+                                      <p style="color: black; font-size: 16px">We will help you find start-ups and software houses all over the country.</p>
+                                  </div>
+                              </div>
+
+                          </div>
+                          <div >
+                              <div class="center">
+                                  <div >
+                                      <img src="img/s3.png" alt="">
+                                  </div>
+                                  <div >
+                                      <a href="/feed"><h3>Endless Support</h3></a>
+                                      <p style="color: black; font-size: 16px">We will provide you with a platform to discuss your ideas or issues with others.</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </section>
           </div>
-        </div>
-      </section>
-      <!-- End we-offer Area -->
+          <div class="imagecon">
+              <div class="cont">
+                  <span class="text1">Welcome to</span>
+                  <span class="text2">jobHire</span>
+              </div>
+          </div>
 
-
-
-
+      </div>
+    </div>
     </body>
-  </html>
+</html>

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="Style1.css" />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -27,15 +26,14 @@
     </style>
 </head>
 
-<body BGCOLOR="white">
+<body BGCOLOR="#f5f5dc">
 <div class="container1">
-
     <nav id="nav-menu-container">
         <ul class="nav-menu" id="navigation">
             <li><a href="/">Home</a></li>
             <li><a href="/aboutus.html">About</a></li>
             <li><a href="/community.html">Community</a></li>
-            <li><a href="/feed">User Posts</a></li>
+            <li><a href="/feed.html">User Posts</a></li>
             <li ><a>Companies</a>
                 <ul>
                     <li class="active"><a href="map.html">Location</a> </li>
@@ -54,109 +52,41 @@
 <br>
 <br>
 <h1 class="center">
-    Landmarks highlight the software houses from Pakistan in which you can apply.
+    Landmarks highlight the software houses from Pakistan in which you can apply. Click on the landmark and you'll see the description.
 </h1>
+<body>
 <div style="position:relative;width:100%">
     <div id="map" style="position:absolute;right:70px;top:0px;width: 1200px; height: 480px;"></div>
 </div>
+</body>
+</body>
 <script>
     function initMap(){
         var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: -34.397, lng: 150.644},
-            zoom: 4,
-            styles: [
-                {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-                {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-                {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-                {
-                    featureType: 'administrative.locality',
-                    elementType: 'labels.text.fill',
-                    stylers: [{color: '#d59563'}]
-                },
-                {
-                    featureType: 'poi',
-                    elementType: 'labels.text.fill',
-                    stylers: [{color: '#d59563'}]
-                },
-                {
-                    featureType: 'poi.park',
-                    elementType: 'geometry',
-                    stylers: [{color: '#263c3f'}]
-                },
-                {
-                    featureType: 'poi.park',
-                    elementType: 'labels.text.fill',
-                    stylers: [{color: '#6b9a76'}]
-                },
-                {
-                    featureType: 'road',
-                    elementType: 'geometry',
-                    stylers: [{color: '#38414e'}]
-                },
-                {
-                    featureType: 'road',
-                    elementType: 'geometry.stroke',
-                    stylers: [{color: '#212a37'}]
-                },
-                {
-                    featureType: 'road',
-                    elementType: 'labels.text.fill',
-                    stylers: [{color: '#9ca5b3'}]
-                },
-                {
-                    featureType: 'road.highway',
-                    elementType: 'geometry',
-                    stylers: [{color: '#746855'}]
-                },
-                {
-                    featureType: 'road.highway',
-                    elementType: 'geometry.stroke',
-                    stylers: [{color: '#1f2835'}]
-                },
-                {
-                    featureType: 'road.highway',
-                    elementType: 'labels.text.fill',
-                    stylers: [{color: '#f3d19c'}]
-                },
-                {
-                    featureType: 'transit',
-                    elementType: 'geometry',
-                    stylers: [{color: '#2f3948'}]
-                },
-                {
-                    featureType: 'transit.station',
-                    elementType: 'labels.text.fill',
-                    stylers: [{color: '#d59563'}]
-                },
-                {
-                    featureType: 'water',
-                    elementType: 'geometry',
-                    stylers: [{color: '#17263c'}]
-                },
-                {
-                    featureType: 'water',
-                    elementType: 'labels.text.fill',
-                    stylers: [{color: '#515c6d'}]
-                },
-                {
-                    featureType: 'water',
-                    elementType: 'labels.text.stroke',
-                    stylers: [{color: '#17263c'}]
-                }
-            ]
+            zoom: 4
+
         });
         addLandmark(map, 31.466722, 74.236459, 'Arbisoft',
             'Offers machine learning job')
         addLandmark(map, 33.669390, 73.073876, 'Xorlogics',
-            '')
+            ' Provides high quality solutions in the field of custom Software Engineering')
         addLandmark(map, 33.711017, 73.039468, 'NineSol Technologies',
-            '')
+            'It provides cutting edge IT services, Web Solutions, Mobile Solutions')
         addLandmark(map, 24.857958, 67.045722, 'Avaib',
-            '')
+            'It provides Outsourcing Solutions, IT and communication solutions, Web Development Services')
         addLandmark(map, 24.879837, 67.059131, 'Genetech Solutions',
-            '')
+            'They are adept at handling PHP, .NET, MEAN, React Native, AJAX, Native and Hybrid Mobile Applications.')
         addLandmark(map, 31.462243, 74.275452, 'Arham Soft(Pvt) Limited',
-            '')
+            'They deliver exclusive software solutions and white label products beyond compare')
+        addLandmark(map, 31.561122, 74.334902, 'Techlogix',
+            'Techlogix is an information technology, consulting, and business solutions company that helps enterprises use innovation')
+        addLandmark(map, 31.481231, 74.310496, 'Ovex Technologies',
+            'It is one of the fastest growing BPO solutions provider and a leading exporter of IT services from Pakistan')
+        addLandmark(map, 33.686666, 73.039045, 'Teradata',
+            'Teradata is a community of people who believe in the power of data to change the world, and ready to challenge the complexity.')
+        addLandmark(map, 31.432932, 74.286980, 'Novatore Solutions',
+            'They deliver end to end integradted solutions in design')
         var infoWindow = new google.maps.InfoWindow;
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
@@ -200,5 +130,4 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB23VIz6AZqDIfgNi0-p8akpLMiiVJcciE&callback=initMap">
 </script>
-</body>
 </html>

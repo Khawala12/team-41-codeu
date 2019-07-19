@@ -2,8 +2,7 @@
 <html>
 <head>
     <title>Community Page</title>
-    <link rel="stylesheet" href="/css/main.css">
-
+    <link rel="stylesheet" href="Style1.css" />
     <script>
 
         /** Fetches users and adds them to the page. */
@@ -41,22 +40,36 @@
         }
     </script>
 </head>
-<body onload="buildUI()"; style="background: url(https://cdn.wallpapersafari.com/34/27/NMdk1G.jpg); background-size: 100% 100%; height: 800px">
-<nav>
-    <ul id="navigation">
-      <li><a href="/">Home</a></li>
-      <li><a href="/aboutus.html">About Our Team</a></li>
-      <li><a href="/community.html">Community</a></li>
-      <li><a href="/feed.html">User Posts</a></li>
-      <li><a href="/chart.html">Review</a></li>
-      <li><a href="/map.html">Map/Search</a></li>
-    </ul>
-</nav>
+<body BGCOLOR="#f5f5dc">
+<div class="container1">
+    <nav id="nav-menu-container">
+        <ul class="nav-menu" id="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/aboutus.html">About</a></li>
+            <li class="active"><a href="/community.html">Community</a></li>
+            <li><a href="/feed.html">User Posts</a></li>
+            <li ><a>Companies</a>
+                <ul>
+                    <li><a href="map.html">Location</a> </li>
+                    <li><a href="chart.html">Reviews</a> </li>
+                </ul>
+            </li>
+            <li><a href="user-page.html">Login</a></li>
+        </ul>
+    </nav><!-- #nav-menu-container -->
+</div>
+<br>
+<div class="logo">
+    <img src="img/logo.png">
+</div>
+<br>
+<br>
+<br>
 <div id="content">
     <h1>Community Page</h1>
     <p>Here is a list of every user who has posted a message:</p>
     <hr/>
-    <ul id="list">Loading...</ul>
+    <ul1 id="list">Loading...</ul1>
 </div>
 </body>
 </html>

@@ -23,7 +23,45 @@ limitations under the License.
     <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
      <!-- <link rel="stylesheet" href="/css/user-page.css"> -->
     <link rel="shortcut icon" href="favicon.ico">
-  <style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+      display: inline-block;
+    }
+
+    .title {
+      color: grey;
+      font-size: 18px;
+    }
+
+    button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 22px;
+      color: black;
+    }
+    button:hover, a:hover {
+      opacity: 0.7;
+    }
+
     ul1{
       padding:0px;
       list-style: none;
@@ -73,6 +111,11 @@ limitations under the License.
       color: #000;
 
     }
+    .white{
+      background-color: white;
+      margin: 0;
+      padding: 10px;
+    }
   </style>
 </head>
 
@@ -102,35 +145,56 @@ limitations under the License.
 <br>
 <br>
 <br>
-  <div class="container">
+  <h1 style="text-align:center">About Us</h1>
 
-    <!-- <img src="img/cover4.jpg" alt="image not load" width="1920" height="1080" class="bg"> -->
-    <h2><span>About US</span></h2>
+  <div style="display: flex; justify-content: center; align-items: center;">
 
+
+  <div class="card">
+    <img src="/img/Nosherwan.jpg" alt="Nosherwan" style="width:100%">
+    <h1 class="white">Nosherwan</h1>
+    <p class="title white">CEO & Founder of Jobhires</p>
+    <p class="white">NUST University</p>
+    <div class="white">
+      <a href="#"><i class="fa fa-instagram"></i></a>  
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-dribbble"></i></a> 
+      <a href="#"><i class="fa fa-twitter"></i></a>  
+      <a href="#"><i class="fa fa-linkedin"></i></a> 
+    </div>
+    <p class="white"><button>Contact</button></p>
   </div>
 
+  <div class="card">
+    <img src="/img/khawala.png" alt="Nosherwan" style="width:100%">
+    <h1 class="white">Khawala</h1>
+    <p class="title white">CFO & Founder of Jobhires</p>
+    <p class="white">FAST, NUCES</p>
+    <div class="white">
+      <a href="#"><i class="fa fa-instagram"></i></a>  
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-dribbble"></i></a> 
+      <a href="#"><i class="fa fa-twitter"></i></a>  
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+    </div>
+    <p class="white"><button>Contact</button></p>
+  </div>
 
+  <div class="card">
+    <img src="/img/abdullah.jpg" alt="Nosherwan" style="width:100%">
+    <h1 class="white">Abdullah</h1>
+    <p class="title white">CTO & Founder of Jobhires</p>
+    <p class="white">NUST University</p>
+    <div class="white">
+      <a href="#"><i class="fa fa-instagram"></i></a>  
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-dribbble"></i></a> 
+      <a href="#"><i class="fa fa-twitter"></i></a>  
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+    </div>
+    <p class="white"><button>Contact</button></p>
+  </div>
 
-  <div class="container_text">
-
-    <h1>Nosherwan Akram</h1>
-    <ul>
-      <li>Summer Feelz: Adventurous, Exploring, Growing</li>
-      <li>Aspirational Hobby: To travel and explore the far reaches of the globe and in an inquisitive sense of finding and learning something new ^_^</li>
-      <li>Ask me About: Understanding philosophy and specifically existentialism, I am a fan of football too.</li>
-    </ul>
-    <h1>Khawala Tauseef</h1>
-    <ul>
-      <li>Summer Feelz: Excited, Happy, Relaxing </li>
-      <li>Aspirational Hobby: I would travel. Travelling will help me connecting<br>  new people as I'll meet people from various races, regions. </li>
-      <li>Ask me About: I'm passionate about baking. I love the process of <br>researching new recipes and testing them out. </li>
-    </ul>
-    <h1>Muhammad Abdullah Rafique</h1>
-    <ul>
-      <li>Summer Feelz: Interesting, Anticipating, Coding.</li>
-      <li>Aspirational Hobby: I love travelling. I Just want to sit under Norway's brightning auroras and spend my night just seeing the milkyway :) </li>
-      <li>Ask me About: How to curve the football to put in top left corner.</li>
-    </ul>
 
   </div>
 

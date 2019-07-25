@@ -25,6 +25,7 @@ limitations under the License.
     <link rel="shortcut icon" href="favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/js/navigation-loader.js"></script>
     <style>
     .card {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -61,13 +62,18 @@ limitations under the License.
     button:hover, a:hover {
       opacity: 0.7;
     }
+    .white{
+      background-color: white;
+      margin: 0;
+      padding: 10px;
+    }
 
-    ul1{
+    ul{
       padding:0px;
       list-style: none;
       float: right;
     }
-    ul1 li1{
+    ul li{
       float:left;
       width:140px;
       height:50px;
@@ -76,7 +82,7 @@ limitations under the License.
       text-align: center;
       font-size: 20px;
     }
-    ul1 li1 a{
+    ul li a{
       text-decoration: none;
       color: white;
       display: block;
@@ -86,14 +92,14 @@ limitations under the License.
       background-color: black;
       transition: 0.6s ease;
     }
-    ul1 li1 a:hover{
+    ul li a:hover{
       background-color: white;
       color: #000;
     }
-    ul1 li1 ul1 li1{
+    ul li ul li{
       display:none;
     }
-    ul1 li1:hover ul1 li1{
+    ul li:hover ul li{
       display: block;
     }
     .logo img{
@@ -106,41 +112,33 @@ limitations under the License.
       max-width: 1200px;
       margin:auto;
     }
-    ul1 li1.active a{
+    ul li.active a{
       background-color: white;
       color: #000;
 
     }
-    .white{
-      background-color: white;
-      margin: 0;
-      padding: 10px;
-    }
+    
   </style>
 </head>
 
 
-<body BGCOLOR="#f5f5dc">
+<body onload="addLoginOrLogoutLinkToNavigation();" BGCOLOR="#f5f5dc">
 <div class="container1">
   <nav id="nav-menu-container">
-    <ul1 class="nav-menu" id="navigation">
-      <li1><a href="/">Home</a></li1>
-      <li1 class="active"><a href="/aboutus.html">About</a></li1>
-      <li1><a href="/community.html">Community</a></li1>
-      <li1><a href="/feed.html">User Posts</a></li1>
-      <li1><a>Companies</a>
-        <ul1>
-          <li1><a href="map.html">Location</a> </li1>
-          <li1><a href="chart.html">Reviews</a> </li1>
-        </ul1>
-      </li1>
-      <li1><a href="user-page.html">Login</a></li1>
-    </ul1>
+    <ul class="nav-menu" id="navigation">
+      <li class="logo"><img src="img/logo.png"></li>
+      <li><a href="/">Home</a></li>
+      <li class="active"><a href="/aboutus.html">About</a></li>
+      <li><a href="/community.html">Community</a></li>
+      <li><a href="/feed">User Posts</a></li>
+      <li><a>Companies</a>
+        <ul>
+          <li><a href="map.html">Location</a> </li>
+          <li><a href="chart.html">Reviews</a> </li>
+        </ul>
+      </li>
+    </ul>
   </nav><!-- #nav-menu-container -->
-</div>
-<br>
-<div class="logo">
-  <img src="img/logo.png">
 </div>
 <br>
 <br>

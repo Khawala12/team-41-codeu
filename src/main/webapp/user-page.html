@@ -22,6 +22,7 @@ limitations under the License.
     <link rel="stylesheet" href="/css/user-page.css">
     <!-- <link rel="stylesheet" href="/css/main.css"> -->
     <script src="/js/user-page-loader.js"></script>
+    <script src="/js/navigation-loader.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
     <script>
       function requestTranslationAboutMe() {
@@ -91,22 +92,85 @@ limitations under the License.
   }
   div {
     border-radius: 5px;
-    background-color: #f2f2f2;
     padding: 20px;
   }
+ul{
+      padding:0px;
+      list-style: none;
+      float: right;
+    }
+    ul li{
+      float:left;
+      width:140px;
+      height:50px;
+      opacity: .8;
+      line-height: 40px;
+      text-align: center;
+      font-size: 20px;
+    }
+    ul li a{
+      text-decoration: none;
+      color: white;
+      display: block;
+      border: 1px solid  #fff;
+      font-size: 20px;
+      font-style: initial;
+      background-color: black;
+      transition: 0.6s ease;
+    }
+    ul li a:hover{
+      background-color: white;
+      color: #000;
+    }
+    ul li ul li{
+      display:none;
+    }
+    ul li:hover ul li{
+      display: block;
+    }
+    .logo img{
+      float: left;
+      width:100px;
+      height: auto;
+      margin-top: -15px;
+    }
+    .container1{
+      max-width: 1200px;
+      margin:auto;
+    }
+    ul li.active a{
+      background-color: white;
+      color: #000;
 
-
-
+    }
+    
   </style>
+</head>
 
-  </head>
-  <body onload="buildUI();">
-    <nav>
-      <ul id="navigation">
-        <li><a href="/">Home</a></li>
-        <li><a href="/aboutus.html">About Our Team</a></li>
-      </ul>
-    </nav>
+
+<body onload="buildUI();addLoginOrLogoutLinkToNavigation();" >
+<div class="container1">
+  <nav id="nav-menu-container">
+    <ul class="nav-menu" id="navigation">
+      <li class="logo"><img src="img/logo.png"></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/aboutus.html">About</a></li>
+      <li><a href="/community.html">Community</a></li>
+      <li><a href="/feed">User Posts</a></li>
+      <li><a>Companies</a>
+        <ul>
+          <li><a href="map.html">Location</a> </li>
+          <li><a href="chart.html">Reviews</a> </li>
+        </ul>
+      </li>
+
+    </ul>
+  </nav><!-- #nav-menu-container -->
+</div>
+
+<br>
+<br>
+<br>
 
   <div style="display: inline-block;width: 100%;" class = "displayUser">
     <img src="img/icon.png" style="float:left;width:70px;height:70px;"   />
@@ -129,7 +193,7 @@ limitations under the License.
     <div id="cvStatus" class="displayAbout">Loading...</div>
 
 
-    <form action="/cv" method="post" enctype="multipart/form-data">
+    <form style="color: white;" action="/cv" method="post" enctype="multipart/form-data">
       Select CV to upload:
       <input type="file" name="fileToUpload" id="fileToUpload" accept="application/pdf">
       <input type="submit" value="Upload CV" name="submit"  id = "formsubmitbutton">
@@ -144,51 +208,37 @@ limitations under the License.
 
 
 
-  <div id="about-me-form" class = "displayUser">
-
-
-
-  <form action="/about" method="POST" class = "displayUser">
-    <h3>Preview CV</h3>
-
-    <br/>
-     <input type="hidden">
-    <input type="submit" name="act" value="Preview" id="formsubmitbutton" download/>
-
-    <br/>
+  <div style="padding: 20px 0px;" id="about-me-form" class = "displayUser">
+    <form action="/about" method="POST" class = "displayUser">
+        <h3>Preview CV</h3>
+        <br/>
+        <input type="hidden">
+        <input type="submit" name="act" value="Preview" id="formsubmitbutton" download/>
+        <br/>
+        <hr/>
+        <h3>enter new about me</h3>
+        <textarea id ="text" name="about-me" placeholder="about me" class="message-body" ></textarea>
+        <br/>
+        <input type="submit" value="Submit" id = "formsubmitbutton">
+    </form>
+    <select id="language">
+      <option value="es">English</option>
+       <option value="zh">Chinese</option>
+       <option value="es">Spanish</option>
+       <option value="hi">Hindi</option>
+       <option value="ar">Arabic</option>
+     </select>
+    <button onclick="requestTranslationAboutMe();">Translate</button>
     <hr/>
+    <div id="result"></div>
+    <hr>
+  </div>
 
-    <h3>enter new about me</h3>
-    <textarea id ="text" name="about-me" placeholder="about me" class="message-body" ></textarea>
-
-    <br/>
-    <input type="submit" value="Submit" id = "formsubmitbutton">
-
-
-
-
-
-  </form>
-  <select id="language">
-    <option value="es">English</option>
-     <option value="zh">Chinese</option>
-     <option value="es">Spanish</option>
-     <option value="hi">Hindi</option>
-     <option value="ar">Arabic</option>
-   </select>
-
-  <button onclick="requestTranslationAboutMe();">Translate</button>
-
-  <hr/>
-  <div id="result"></div>
-
-
-</div>
-
-    <form id="message-form" action="/messages" method="POST" class="message-body">
+  <div style="padding: 20px 0px;" id="message-me-form" class = "displayUser">
+    <form id="message-form" action="/messages" method="POST" class="displayUser">
       <h3> Enter a new message </h3>
       <br/>
-      <textarea name="text" id="message-input" required></textarea>
+      <textarea name="text" id="message-input" placeholder="enter a new message" class="message-body"></textarea>
       <br/>
       <input type="submit" value="Submit" id = "formsubmitbutton1">
     </form>
@@ -205,14 +255,12 @@ limitations under the License.
 
     <hr/>
     <div id="message-result"></div>
-
     <hr/>
-
     <!-- <script>
       const config = {removePlugins: [ 'Heading', 'List', 'ImageUpload' ]};
       ClassicEditor.create(document.getElementById('message-input'), config );
     </script> -->
     <div id="message-container" class = "container">Loading...</div>
-
+  </div>
   </body>
 </html>

@@ -4,6 +4,7 @@
 <title>Message Feed</title>
 <!-- <link rel="stylesheet" href="/css/main.css"> -->
 <link rel="stylesheet" href="/css/user-page.css">
+<script src="/js/navigation-loader.js"></script>
 
 <script>
     
@@ -50,7 +51,27 @@
 </script>
 
 </head>
-<body onload="buildUI()">
+<body onload="addLoginOrLogoutLinkToNavigation(); buildUI();" >
+<div class="container1">
+  <nav id="nav-menu-container">
+    <ul class="nav-menu" id="navigation">
+      <li class="logo"><img src="img/logo.png"></li>
+      <li><a href="/">Home</a></li>
+      <li class="active"><a href="/aboutus.html">About</a></li>
+      <li><a href="/community.html">Community</a></li>
+      <li><a href="/feed">User Posts</a></li>
+      <li><a>Companies</a>
+        <ul>
+          <li><a href="map.html">Location</a> </li>
+          <li><a href="chart.html">Reviews</a> </li>
+        </ul>
+      </li>
+    </ul>
+  </nav><!-- #nav-menu-container -->
+</div>
+<br>
+<br>
+<br>
  <div id="content">
   <h1>Message Feed</h1>
   <hr/>
